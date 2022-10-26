@@ -5,6 +5,7 @@ import { USFlag } from "@components/icons/USFlag";
 import { DEFlag } from "@components/icons/DEFlag";
 import { ESFlag } from "@components/icons/ESFlag";
 import { VNFlag } from "@components/icons/VNFlag";
+import { JAFlag } from "@components/icons/JAFlag";
 
 export const siteSettings = {
 	name: "ChawkBazar",
@@ -23,7 +24,7 @@ export const siteSettings = {
 		height: 30,
 	},
 	defaultLanguage: "vi",
-	currencyCode: "USD",
+	currencyCode: "VND",
 	site_header: {
 		menu: [
 			{
@@ -1564,9 +1565,15 @@ export const siteSettings = {
 		languageMenu: [
 			{
 				id: "vi",
-				name: "VietNam - VN",
+				name: "Tiếng Việt - VN",
 				value: "vi",
 				icon: <VNFlag width="20px" height="15px" />,
+			},
+			{
+				id: "ja",
+				name: "日本 - JA",
+				value: "ja",
+				icon: <JAFlag width="20px" height="15px" />,
 			},
 			{
 				id: "ar",

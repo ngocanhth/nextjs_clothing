@@ -10,12 +10,12 @@ export default function LanguageSwitcher() {
 	const { t } = useTranslation("common");
 	const options = site_header.languageMenu;
 
-	console.log(options);
+	// console.log(options);
 
 	const router = useRouter();
 	const { asPath, locale } = router;
 
-	console.log({ asPath, locale } );
+	// console.log({ asPath, locale } );
 
 	const currentSelectedItem = locale
 		? options.find((o) => o.value === locale)!
