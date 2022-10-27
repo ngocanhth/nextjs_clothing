@@ -7,11 +7,13 @@ import { useUI } from "@contexts/ui.context";
 import Logo from "@components/ui/logo";
 import { ImGoogle2, ImFacebook2 } from "react-icons/im";
 import { useTranslation } from "next-i18next";
+import { useAuth } from "@/src/hooks";
+import { useRouter } from "next/router";
 
 const LoginForm: React.FC = () => {
 	const { t } = useTranslation();
 	const { setModalView, openModal, closeModal } = useUI();
-	const { mutate: login, isLoading } = useLoginMutation();
+	// const { mutate: login, isLoading } = useLoginMutation();
 
 	const {
 		register,
@@ -19,13 +21,27 @@ const LoginForm: React.FC = () => {
 		formState: { errors },
 	} = useForm<LoginInputType>();
 
-	function onSubmit({ email, password, remember_me }: LoginInputType) {
-		login({
-			email,
-			password,
-			remember_me,
-		});
-		console.log(email, password, remember_me, "data");
+	const router = useRouter()
+	const { login, isLoading } = useAuth({
+		revalidateOnMount: false,
+	})
+
+	async function onSubmit(payload: LoginInputType) {
+		// login({
+		// 	email,
+		// 	password,
+		// 	remember_me,
+		// });
+
+		// console.log(email, password, remember_me, "data");
+	//	const { email, password, remember_me } = payload
+
+		try {
+			await login(payload)
+			router.push('/')
+		} catch (error) {
+			console.log('failed to login', error)
+		}
 	}
 	function handelSocialLogin() {
 		login({

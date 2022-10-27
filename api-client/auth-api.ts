@@ -1,4 +1,4 @@
-import { LoginPayload, RegisterPayload } from '@/models'
+import { LoginPayload, RegisterPayload } from '../src/models'
 import axiosClient from './axios-client'
 
 export const authApi = {

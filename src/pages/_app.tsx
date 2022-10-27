@@ -25,6 +25,8 @@ import "@styles/swiper-carousel.css";
 import "@styles/custom-plugins.css";
 import "@styles/tailwind.css";
 import { getDirection } from "@utils/get-direction";
+import { SWRConfig } from 'swr'
+import axiosClient from "@/api-client/axios-client";
 
 function handleExitComplete() {
 	if (typeof window !== "undefined") {
@@ -51,11 +53,13 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
 			<QueryClientProvider client={queryClientRef.current}>
 				<Hydrate state={pageProps.dehydratedState}>
 					<ManagedUIContext>
-						<Layout pageProps={pageProps}>
-							<DefaultSeo />
-							<Component {...pageProps} key={router.route} />
-							<ToastContainer />
-						</Layout>
+						<SWRConfig value={{ fetcher: (url) => axiosClient.get(url), shouldRetryOnError: false }}>
+							<Layout pageProps={pageProps}>
+								<DefaultSeo />
+								<Component {...pageProps} key={router.route} />
+								<ToastContainer />
+							</Layout>
+						</SWRConfig>
 						<ManagedModal />
 						<ManagedDrawer />
 					</ManagedUIContext>
