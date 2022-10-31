@@ -13,7 +13,7 @@ import { useRouter } from "next/router";
 const LoginForm: React.FC = () => {
 	const { t } = useTranslation();
 	const { setModalView, openModal, closeModal } = useUI();
-	// const { mutate: login, isLoading } = useLoginMutation();
+	const { mutate: login, isLoading } = useLoginMutation();
 
 	const {
 		register,
@@ -22,26 +22,26 @@ const LoginForm: React.FC = () => {
 	} = useForm<LoginInputType>();
 
 	const router = useRouter()
-	const { login, isLoading } = useAuth({
-		revalidateOnMount: false,
-	})
+	// const { login, isLoading } = useAuth({
+	// 	revalidateOnMount: false,
+	// })
 
-	async function onSubmit(payload: LoginInputType) {
-		// login({
-		// 	email,
-		// 	password,
-		// 	remember_me,
-		// });
+	async function onSubmit({email, password, remember_me}: LoginInputType) {
+		login({
+			email,
+			password,
+			remember_me
+		});
 
 		// console.log(email, password, remember_me, "data");
 	//	const { email, password, remember_me } = payload
 
-		try {
-			await login(payload)
-			router.push('/')
-		} catch (error) {
-			console.log('failed to login', error)
-		}
+		// try {
+		// 	await login(payload)
+		// 	router.push('/')
+		// } catch (error) {
+		// 	console.log('failed to login', error)
+		// }
 	}
 	function handelSocialLogin() {
 		login({
@@ -50,6 +50,15 @@ const LoginForm: React.FC = () => {
 			remember_me: true,
 		});
 	}
+
+	function handelGoogleLogin() {
+		login({
+			email: "demo@demo.com",
+			password: "demo",
+			remember_me: true,
+		});
+	}
+
 	function handleSignUp() {
 		setModalView("SIGN_UP_VIEW");
 		return openModal();
@@ -154,7 +163,7 @@ const LoginForm: React.FC = () => {
 				loading={isLoading}
 				disabled={isLoading}
 				className="h-11 md:h-12 w-full mt-2.5 bg-google hover:bg-googleHover"
-				onClick={handelSocialLogin}
+				onClick={handelGoogleLogin}
 			>
 				<ImGoogle2 className="text-sm sm:text-base me-1.5" />
 				{t("common:text-login-with-google")}

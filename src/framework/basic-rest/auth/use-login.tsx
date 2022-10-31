@@ -1,3 +1,4 @@
+import { authApi } from "@/api-client";
 import { useUI } from "@contexts/ui.context";
 // import { API_ENDPOINTS } from "@framework/utils/api-endpoints";
 // import http from "@framework/utils/http";
@@ -10,6 +11,12 @@ export interface LoginInputType {
   remember_me: boolean;
 }
 async function login(input: LoginInputType) {
+  const response = authApi.login(input);
+
+  console.log("response: ", response);
+
+  // return true;
+
   // return http.post(API_ENDPOINTS.LOGIN, input);
   return {
     token: `${input.email}.${input.remember_me}`.split("").reverse().join(""),
