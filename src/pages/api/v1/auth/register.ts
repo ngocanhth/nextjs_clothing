@@ -1,8 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
-import httpProxy, { ProxyResCallback } from 'http-proxy'
 import Cookies from 'cookies'
+import httpProxy, { ProxyResCallback } from 'http-proxy'
 import jwtDecode, { JwtPayload } from 'jwt-decode'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {
 	message: string
@@ -44,7 +44,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
 						return resolve(true)
 					}
 
-					const { access_token, refresh_token, err, mes, exp } = JSON.parse(body)
+					const { access_token, exp } = JSON.parse(body)
 					const decoded = jwtDecode<JwtPayload>(access_token)
 					
 					console.log("decoded", decoded);

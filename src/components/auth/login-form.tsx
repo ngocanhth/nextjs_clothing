@@ -1,14 +1,12 @@
-import Input from "@components/ui/input";
-import PasswordInput from "@components/ui/password-input";
 import Button from "@components/ui/button";
-import { useForm } from "react-hook-form";
-import { useLoginMutation, LoginInputType } from "@framework/auth/use-login";
-import { useUI } from "@contexts/ui.context";
+import Input from "@components/ui/input";
 import Logo from "@components/ui/logo";
-import { ImGoogle2, ImFacebook2 } from "react-icons/im";
+import PasswordInput from "@components/ui/password-input";
+import { useUI } from "@contexts/ui.context";
+import { LoginInputType, useLoginMutation } from "@framework/auth/use-login";
 import { useTranslation } from "next-i18next";
-import { useAuth } from "@/src/hooks";
-import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
+import { ImFacebook2, ImGoogle2 } from "react-icons/im";
 
 const LoginForm: React.FC = () => {
 	const { t } = useTranslation();
@@ -21,9 +19,8 @@ const LoginForm: React.FC = () => {
 		formState: { errors },
 	} = useForm<LoginInputType>();
 
-	const router = useRouter()
 	// const { login, isLoading } = useAuth({
-	// 	revalidateOnMount: false,
+	// 	revalidateOnMount: false,O
 	// })
 
 	async function onSubmit({email, password, remember_me}: LoginInputType) {

@@ -20,14 +20,14 @@ const Layout: React.FC = ({ children }) => {
 						content: "width=device-width, initial-scale=1.0",
 					},
 				]}
-				title="ChawkBazar React - React Next E-commerce Template"
+				title="Japan Fashion"
 				description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
 				canonical="https://chawkbazar.vercel.app/"
 				openGraph={{
 					url: "https://chawkbazar.vercel.app",
-					title: "ChawkBazar React - React Next E-commerce Template",
+					title: "Japan Fashion",
 					description:
-						"Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS.",
+						"Japan Fashion chuyên cung cấp các thương hiệu thời trang đến từ Nhật Bản, quần áo, giày dép, đồng hồ sỉ lẻ",
 					images: [
 						{
 							url: "/assets/images/og-image-01.png",
