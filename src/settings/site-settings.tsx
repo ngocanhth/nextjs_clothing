@@ -8,7 +8,7 @@ import { VNFlag } from "@components/icons/VNFlag";
 import { JAFlag } from "@components/icons/JAFlag";
 
 export const siteSettings = {
-	name: "ChawkBazar",
+	name: "Japan Fashion",
 	description:
 		"Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS.",
 	author: {
@@ -18,10 +18,10 @@ export const siteSettings = {
 	},
 	logo: {
 		url: "/assets/images/logo.svg",
-		alt: "ChawkBazar",
+		alt: "Japan Fashion",
 		href: "/",
-		width: 95,
-		height: 30,
+		width: 120,
+		height: 90,
 	},
 	defaultLanguage: "vi",
 	currencyCode: "VND",
